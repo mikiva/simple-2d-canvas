@@ -1,5 +1,5 @@
 import { constant as con } from "../constants.js";
-
+import {context, canvas } from '../app.js';
 
 export var stats, controller, loop;
 
@@ -54,8 +54,10 @@ controller = {
                 break;
             case "mouseup":
                 controller.isHeld = controller.isHeld ? letGo() : false;
+                fly();
                 break;
             case "mousemove":
+                isOnPlayer(rect) ? canvas.style.cursor = "move" : canvas.style.cursor = "auto";
                 if (controller.isHeld) {
                     currEvent = event;
                     stats.gravity = 0;
@@ -135,12 +137,11 @@ stats.friction = con.friction;
 
 stats.speedX = movementX;
 stats.speedY = movementY;
+};
 
-stats.speedY += stats.gravity; //gravity
-stats.x += stats.speedX;
-stats.y += stats.speedY;
-stats.speedX *= stats.friction;
-stats.speedY *= stats.friction;
+function fly() {
 
+
+    
 
 }

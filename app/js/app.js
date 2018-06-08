@@ -4,7 +4,7 @@ import { constant as con } from "./constants.js";
 
 
 
-var context, canvas;
+export var context, canvas;
 var canvas = document.querySelector("canvas");
 context = canvas.getContext("2d");
 
@@ -33,6 +33,14 @@ setInterval(function () {
     context.moveTo(0, con.lineY);
     context.lineTo(context.canvas.width, con.lineY);
     context.stroke();
+
+    context.strokeStyle = "#ffffff";
+    context.lineWidth = 3;
+    context.beginPath();
+    context.moveTo(context.canvas.width/2, context.canvas.height/2)
+    context.lineTo((player.stats.x + player.stats.width/2), player.stats.y + player.stats.height/2);
+    context.stroke();
+
 }, 20);
 
 window.addEventListener("keydown", player.controller.keyListener);
